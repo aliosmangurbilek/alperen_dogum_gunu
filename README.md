@@ -20,7 +20,7 @@ Proje klasöründe `python3 -m http.server 8000 --directory dist` komutunu çal�
 docker compose up --build -d
 ```
 
-Site `http://localhost:8080` adresinde açılır. Durdurmak için:
+Site `http://localhost:43127` adresinde açılır. Durdurmak için:
 
 ```bash
 docker compose down

@@ -5,5 +5,5 @@ services:
     image: alperen-dogum-gunu:latest
     container_name: alperen-dogum-gunu
     ports:
-      - "8080:80"
+      - "43127:80"
     restart: unless-stopped

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#071d22">
+  <meta name="description" content="Alperen için hazırlanmış blok dünyasında bir doğum günü macerası.">
+  <title>Alperen'in Doğum Günü Macerası</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <audio id="birthdayMusic" loop preload="auto"><source src="assets/dogum-gunu-sarkisi.mp3" type="audio/mpeg"></audio>
+
+  <button class="sound-button" id="soundButton" type="button" aria-label="Müziği aç veya kapat">
+    <span class="sound-icon">♪</span><span class="sound-label">Müzik</span>
+  </button>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="sky-decor" aria-hidden="true">
+        <span class="cloud cloud-one"></span><span class="cloud cloud-two"></span>
+        <span class="sun"></span>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">ÖZEL GÖREV • SEVİYE <span data-age>11</span></p>
+        <h1><span>ALPEREN</span><br>YENİ BİR SEVİYEYE ULAŞTI!</h1>
+        <p class="intro">Kazmanı hazırla, cesaretini yanına al. Bu blok dünyasında seni bekleyen çok özel bir doğum günü görevi var.</p>
+        <button class="pixel-button primary" id="startButton" type="button"><span>Maceraya Başla</span><i>→</i></button>
+      </div>
+      <div class="hero-world" aria-hidden="true">
+        <div class="floating-island island-back"><span class="tree"></span></div>
+        <div class="floating-island island-main">
+          <span class="block-character"><i class="hair"></i><i class="face"></i><i class="body"></i><i class="arm a1"></i><i class="arm a2"></i><i class="leg l1"></i><i class="leg l2"></i></span>
+          <span class="tree large"></span>
+          <span class="diamond d1">◆</span><span class="diamond d2">◆</span>
+        </div>
+      </div>
+      <div class="scroll-hint">AŞAĞI KAYDIR <span>↓</span></div>
+    </section>
+
+    <section class="mission-section" id="missions">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark">GÖREV HARİTASI</p>
+        <h2>Efsanevi kutlamaya<br>üç adım kaldı</h2>
+        <p>Her görevi tamamla, gizli sandığın kilidini aç.</p>
+      </div>
+
+      <div class="mission-grid">
+        <article class="mission-card active reveal" data-mission="1">
+          <div class="card-top"><span class="mission-number">01</span><span class="mission-state">AKTİF</span></div>
+          <div class="mission-icon diamond-icon">◆</div>
+          <h3>Elmas Avı</h3>
+          <p>Kayaların arasına gizlenmiş 5 elması bul ve topla.</p>
+          <div class="diamond-field" id="diamondField" aria-label="Elmas bulma oyunu">
+            <button class="hidden-diamond x1" aria-label="Gizli elmas">◆</button>
+            <button class="hidden-diamond x2" aria-label="Gizli elmas">◆</button>
+            <button class="hidden-diamond x3" aria-label="Gizli elmas">◆</button>
+            <button class="hidden-diamond x4" aria-label="Gizli elmas">◆</button>
+            <button class="hidden-diamond x5" aria-label="Gizli elmas">◆</button>
+            <div class="ore o1"></div><div class="ore o2"></div><div class="ore o3"></div>
+          </div>
+          <div class="progress-row"><span><b id="diamondCount">0</b> / 5 elmas</span><div class="progress"><i id="diamondProgress"></i></div></div>
+        </article>
+
+        <article class="mission-card locked reveal" data-mission="2">
+          <div class="card-top"><span class="mission-number">02</span><span class="mission-state">KİLİTLİ</span></div>
+          <div class="mission-icon heart-icon">♥</div>
+          <h3>Güç İksiri</h3>
+          <p>Seni güçlü yapan üç şeyi seç. Burada yanlış cevap yok!</p>
+          <div class="power-options">
+            <button type="button">Cesaret</button><button type="button">Neşe</button><button type="button">Merak</button>
+            <button type="button">Dostluk</button><button type="button">Hayal Gücü</button><button type="button">İyilik</button>
+          </div>
+          <div class="progress-row"><span><b id="powerCount">0</b> / 3 güç</span><div class="progress"><i id="powerProgress"></i></div></div>
+        </article>
+
+        <article class="mission-card locked reveal" data-mission="3">
+          <div class="card-top"><span class="mission-number">03</span><span class="mission-state">KİLİTLİ</span></div>
+          <div class="mission-icon star-icon">★</div>
+          <h3>Sihirli Söz</h3>
+          <p>Son kapıyı açmak için doğum gününün sihirli sözünü söyle.</p>
+          <div class="phrase-box">
+            <button class="phrase" type="button" data-correct="false">Bol bol ödev!</button>
+            <button class="phrase" type="button" data-correct="true">İyi ki doğdun!</button>
+            <button class="phrase" type="button" data-correct="false">Köylü sesi!</button>
+          </div>
+          <p class="feedback" id="phraseFeedback" aria-live="polite"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="treasure-section locked-section" id="treasure">
+      <div class="lock-curtain" id="lockCurtain">
+        <span class="lock-pixel">▣</span>
+        <p>Tüm görevleri tamamlayınca açılır</p>
+      </div>
+      <div class="treasure-copy reveal">
+        <p class="eyebrow">GİZLİ SANDIK AÇILDI</p>
+        <h2>Bugünün en değerli<br>hazinesi sensin.</h2>
+        <p>Yeni yaşında harika dünyalar keşfet, bol bol gül ve hayallerinin peşinden git. Seni çok seviyoruz!</p>
+        <div class="signature">— Ailenden, sevgiyle ♡</div>
+      </div>
+      <div class="chest-scene" aria-hidden="true">
+        <div class="light-beam"></div><div class="chest"><i class="lid"></i><i class="base"></i><i class="latch"></i></div>
+        <span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">◆</span><span class="spark s4">✦</span>
+      </div>
+    </section>
+
+    <section class="cake-section" id="cakeSection">
+      <div class="section-heading light reveal">
+        <p class="eyebrow">SON GÖREV</p>
+        <h2>Bir dilek tut,<br>mumlara dokun!</h2>
+        <p id="candleInstruction">Mumları tek tek söndür. Son mum sönünce sürprizin hazır!</p>
+      </div>
+      <div class="cake-wrap reveal">
+        <div class="candles" id="candles" aria-label="Doğum günü mumları"></div>
+        <div class="cake" aria-hidden="true">
+          <div class="cake-top"><span></span><span></span><span></span><span></span></div>
+          <div class="cake-layer layer-one"><i></i><i></i><i></i><i></i></div>
+          <div class="cake-layer layer-two"><i></i><i></i><i></i></div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+      <p class="candle-counter"><span id="candlesLeft">11</span> mum kaldı</p>
+    </section>
+
+    <div class="finale" id="finale" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="finaleTitle">
+      <div class="confetti" id="confetti"></div>
+      <div class="finale-card">
+        <span class="finale-badge">SEVİYE <span data-age>11</span></span>
+        <h2 id="finaleTitle">İYİ Kİ DOĞDUN<br><span>ALPEREN!</span></h2>
+        <p>Yeni yaşın en güzel maceran olsun.</p>
+        <button class="pixel-button primary" id="replayButton" type="button">Tekrar Oyna ↻</button>
+      </div>
+    </div>
+  </main>
+
+  <footer><span>◆</span> ALPEREN İÇİN SEVGİYLE ÜRETİLDİ <span>◆</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>

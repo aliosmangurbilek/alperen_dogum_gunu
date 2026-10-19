@@ -1,0 +1,9 @@
+.git
+.github
+.agents
+.codex
+.openai
+.sites-checkout
+*.tar.gz
+README.md
+compose.yaml

@@ -1,0 +1,3 @@
+.sites-checkout/
+*.tar.gz
+.DS_Store

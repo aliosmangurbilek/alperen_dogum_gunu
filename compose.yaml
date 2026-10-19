@@ -1,0 +1,9 @@
+services:
+  birthday-site:
+    build:
+      context: .
+    image: alperen-dogum-gunu:latest
+    container_name: alperen-dogum-gunu
+    ports:
+      - "8080:80"
+    restart: unless-stopped

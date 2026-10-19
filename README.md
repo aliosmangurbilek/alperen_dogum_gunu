@@ -13,3 +13,22 @@ Kullanma hakkına sahip olduğunuz MP3 dosyasını `dist/assets/dogum-gunu-sarki
 ## Yerel önizleme
 
 Proje klasöründe `python3 -m http.server 8000 --directory dist` komutunu çalıştırıp `http://localhost:8000` adresini açın.
+
+## Docker ile çalıştırma
+
+```bash
+docker compose up --build -d
+```
+
+Site `http://localhost:8080` adresinde açılır. Durdurmak için:
+
+```bash
+docker compose down
+```
+
+Yalnızca image oluşturmak isterseniz:
+
+```bash
+docker build -t alperen-dogum-gunu .
+docker run --rm -p 8080:80 alperen-dogum-gunu
+```

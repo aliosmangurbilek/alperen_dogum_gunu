@@ -116,11 +116,13 @@ function extinguish(candle) {
   remaining--;
   candlesLeft.textContent = remaining;
   if ('vibrate' in navigator) navigator.vibrate(25);
-  if (remaining === 0) setTimeout(showFinale, 650);
+  if (remaining === 0) showFinale();
 }
 
 function showFinale() {
   const finale = document.getElementById('finale');
+  soundButton.style.display = 'flex';
+  toggleMusic(true);
   finale.classList.add('show');
   finale.setAttribute('aria-hidden','false');
   const colors = ['#42e5e2','#ffd75d','#ff6687','#8de36c','#fff'];
@@ -148,10 +150,15 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
 }), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-let cakeMusicTriggered = false;
-const cakeObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-  if (!entry.isIntersecting || cakeMusicTriggered || !missionsComplete) return;
-  cakeMusicTriggered = true;
-  toggleMusic(true);
-}), {threshold:.3});
-cakeObserver.observe(document.getElementById('cakeSection'));
+function stopMusic() {
+  music.pause();
+  music.currentTime = 0;
+  soundButton.classList.remove('playing');
+  soundButton.querySelector('.sound-label').textContent = 'Müzik';
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopMusic();
+});
+window.addEventListener('pagehide', stopMusic);
+window.addEventListener('beforeunload', stopMusic);

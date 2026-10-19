@@ -8,7 +8,7 @@ Blok dünyası estetiğinde, mobil uyumlu ve etkileşimli bir doğum günü site
 
 ## Müzik ekleme
 
-Kullanma hakkına sahip olduğunuz MP3 dosyasını `dist/assets/dogum-gunu-sarkisi.mp3` adıyla ekleyin. Tarayıcı kuralları nedeniyle müzik, ziyaretçi “Maceraya Başla” veya “Müzik” düğmesine dokunduktan sonra çalar.
+Kullanma hakkına sahip olduğunuz MP3 dosyasını `dist/assets/dogum-gunu-sarkisi.mp3` adıyla ekleyin. Müzik pasta bölümü ekrana geldiğinde başlar. Tarayıcı otomatik oynatmayı engellerse sağ üstteki “Müzik” düğmesine dokunmak gerekir.
 
 ## Yerel önizleme
 

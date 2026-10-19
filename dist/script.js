@@ -11,8 +11,10 @@ document.querySelectorAll('[data-age]').forEach(el => el.textContent = age);
 document.querySelectorAll('h1 span, #finaleTitle span').forEach(el => el.textContent = CONFIG.name.toUpperCase() + (el.closest('h1') ? '' : '!'));
 
 const music = document.getElementById('birthdayMusic');
+const villagerSound = document.getElementById('villagerSound');
 const soundButton = document.getElementById('soundButton');
 let musicReady = false;
+let missionsComplete = false;
 music.volume = .45;
 
 async function toggleMusic(forcePlay = false) {
@@ -34,7 +36,6 @@ async function toggleMusic(forcePlay = false) {
 
 soundButton.addEventListener('click', () => toggleMusic());
 document.getElementById('startButton').addEventListener('click', () => {
-  if (!musicReady) toggleMusic(true);
   document.getElementById('missions').scrollIntoView({behavior:'smooth'});
 });
 
@@ -77,9 +78,15 @@ document.querySelectorAll('.phrase').forEach(button => button.addEventListener('
   if (button.dataset.correct === 'true') {
     feedback.textContent = 'Kapı açıldı! ✦';
     completeCard(2);
+    missionsComplete = true;
     document.getElementById('treasure').classList.add('unlocked');
+    document.getElementById('cakeSection').classList.add('unlocked');
     setTimeout(() => document.getElementById('treasure').scrollIntoView({behavior:'smooth'}), 500);
   } else {
+    if (button.dataset.sound === 'villager') {
+      villagerSound.currentTime = 0;
+      villagerSound.play().catch(() => {});
+    }
     feedback.textContent = 'Hmm… başka bir söz dene!';
     button.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'none'}],{duration:250});
   }
@@ -140,3 +147,11 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) entry.target.classList.add('visible');
 }), {threshold:.12});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+let cakeMusicTriggered = false;
+const cakeObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+  if (!entry.isIntersecting || cakeMusicTriggered || !missionsComplete) return;
+  cakeMusicTriggered = true;
+  toggleMusic(true);
+}), {threshold:.3});
+cakeObserver.observe(document.getElementById('cakeSection'));

@@ -5,3 +5,5 @@ dist/assets/dogum-gunu-sarkisi.mp3
 
 Lütfen yalnızca kullanma hakkına sahip olduğunuz bir ses dosyasını ekleyin.
 YouTube'dan indirilen içeriklerde hak sahibinin izni ve platform kuralları geçerlidir.
+
+Köylü sesi efekti için dosya adı: koylu-sesi.mp3

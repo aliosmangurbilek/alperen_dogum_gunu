@@ -14,6 +14,7 @@
 <body>
   <div class="noise" aria-hidden="true"></div>
   <audio id="birthdayMusic" loop preload="auto"><source src="assets/dogum-gunu-sarkisi.mp3" type="audio/mpeg"></audio>
+  <audio id="villagerSound" preload="auto"><source src="assets/koylu-sesi.mp3" type="audio/mpeg"></audio>
 
   <button class="sound-button" id="soundButton" type="button" aria-label="Müziği aç veya kapat">
     <span class="sound-icon">♪</span><span class="sound-label">Müzik</span>
@@ -86,7 +87,7 @@
           <div class="phrase-box">
             <button class="phrase" type="button" data-correct="false">Bol bol ödev!</button>
             <button class="phrase" type="button" data-correct="true">İyi ki doğdun!</button>
-            <button class="phrase" type="button" data-correct="false">Köylü sesi!</button>
+            <button class="phrase" type="button" data-correct="false" data-sound="villager">Köylü sesi!</button>
           </div>
           <p class="feedback" id="phraseFeedback" aria-live="polite"></p>
         </article>
@@ -110,7 +111,11 @@
       </div>
     </section>
 
-    <section class="cake-section" id="cakeSection">
+    <section class="cake-section locked-section" id="cakeSection">
+      <div class="lock-curtain" id="cakeLockCurtain">
+        <span class="lock-pixel">▣</span>
+        <p>Pastayı açmak için tüm görevleri tamamla</p>
+      </div>
       <div class="section-heading light reveal">
         <p class="eyebrow">SON GÖREV</p>
         <h2>Bir dilek tut,<br>mumlara dokun!</h2>
